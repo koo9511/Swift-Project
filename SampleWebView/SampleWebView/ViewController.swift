@@ -25,13 +25,14 @@ class ViewController: UIViewController {
 //        Introduce myself
 //        let urlString = "https://koo9511.github.io"
         
-//        localhost
-          let urlString = "http://127.0.0.1:8080/find/"
 //        RMS
 //        let urlString = "http://115.68.26.52"
         
 //        BDP
 //        let urlString = "http://115.68.26.51:8080"
+        
+//        With U
+          let urlString = "http://127.0.0.1:8080/find/"
         
         if let url = URL(string : urlString){ // unwrapping 과정 - 옵셔널 바인딩
             let urlReq = URLRequest(url: url)
