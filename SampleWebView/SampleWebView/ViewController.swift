@@ -30,7 +30,8 @@ class ViewController: UIViewController, WKUIDelegate {
 
             //    - 여기서는 self.view 화면 전체를 WKWebView로 구성하였습니다.
 
-            self.wkWebView = WKWebView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+            // -47
+            self.wkWebView = WKWebView.init(frame: CGRect.init(x: 0, y: -47, width: self.view.frame.size.width, height: self.view.frame.size.height+94))
 
      
 
@@ -41,7 +42,7 @@ class ViewController: UIViewController, WKUIDelegate {
      
 
             // * WKWebView 화면 비율 맞춤 설정
-            self.wkWebView?.translatesAutoresizingMaskIntoConstraints = false
+//            self.wkWebView?.translatesAutoresizingMaskIntoConstraints = false
             self.wkWebView?.autoresizingMask = UIView.AutoresizingMask(rawValue: UIView.AutoresizingMask.RawValue(UInt8(UIView.AutoresizingMask.flexibleWidth.rawValue) | UInt8(UIView.AutoresizingMask.flexibleHeight.rawValue)))
 
      
@@ -104,7 +105,7 @@ class ViewController: UIViewController, WKUIDelegate {
 
             let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
 
-            let ac = UIAlertAction(title: "OK", style: .default, handler: { action in
+            let ac = UIAlertAction(title: "확인", style: .default, handler: { action in
 
                 completionHandler()
 
@@ -112,7 +113,7 @@ class ViewController: UIViewController, WKUIDelegate {
 
            // * 만약 버튼의 색을 변경하고 싶다면 아래 구문을 추가 합니다.
 
-            ac.setValue(UIColor.red, forKey: "titleTextColor")
+            ac.setValue(UIColor.blue, forKey: "titleTextColor")
 
             alertController.addAction(ac)
 
@@ -126,21 +127,21 @@ class ViewController: UIViewController, WKUIDelegate {
 
        func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
 
-           // * 전달 받은 message로 팝업 제목에 도메인 주소가 보이지 않도록 UIAlertController를 앱에서 호출하는 부분입니다.
+           // * 전달 받은 message로 팝업 제목에 도메인 주소가 보이지 않도록 UIAlertController를 앱에서 호출
 
             let alertController = UIAlertController(title: "", message: message, preferredStyle: .alert)
 
-            let ac = UIAlertAction(title: "OK", style: .default, handler: { action in
+            let ac = UIAlertAction(title: "확인", style: .default, handler: { action in
 
                 completionHandler(true)
 
             })
 
-            ac.setValue(UIColor.red, forKey: "titleTextColor")
+            ac.setValue(UIColor.blue, forKey: "titleTextColor")
 
             alertController.addAction(ac)
 
-            let ac2 = UIAlertAction(title: "NO", style: .cancel, handler: { action in
+            let ac2 = UIAlertAction(title: "취소", style: .cancel, handler: { action in
 
                 completionHandler(false)
 
