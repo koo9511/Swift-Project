@@ -21,8 +21,6 @@ class ViewController: UIViewController, WKUIDelegate {
             // safe area 무효화 처리
             self.wkWebView?.insetsLayoutMarginsFromSafeArea = false
             
-            // * WKWebView 구성
-            //    - self.view 화면 전체를 WKWebView 로
             // -47
             self.wkWebView = WKWebView.init(frame: CGRect.init(x: 0, y: -47, width: self.view.frame.size.width, height: self.view.frame.size.height+94))
 
@@ -37,8 +35,8 @@ class ViewController: UIViewController, WKUIDelegate {
             self.wkWebView?.isOpaque = false
             self.wkWebView?.loadHTMLString("<body style=\"background-color: transparent\">", baseURL: nil)
 
-             let request: URLRequest = URLRequest.init(url: NSURL.init(string: "http://192.168.0.195/:8080/withu_exploded/")! as URL, cachePolicy: URLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 10)
-            
+            let request: URLRequest = URLRequest.init(url: NSURL.init(string: "http://localhost:8080/withu_exploded/")! as URL, cachePolicy: URLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 10)
+                
 //            let request: URLRequest = URLRequest.init(url: NSURL.init(string: "http://localhost:8080/reservation_war_exploded/assistmenshair/main")! as URL, cachePolicy: URLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 10)
 
              self.wkWebView?.load(request)
@@ -50,7 +48,7 @@ class ViewController: UIViewController, WKUIDelegate {
         func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView?
 
         {
-           // * targetFrame의 mainframe이 nil일 경우 request를 로드합니다.
+           // * targetFrame의 mainframe이 nil일 경우 request를 로드.
             if navigationAction.targetFrame?.isMainFrame == nil {
                 webView.load(navigationAction.request)
             }
@@ -64,7 +62,7 @@ class ViewController: UIViewController, WKUIDelegate {
             let ac = UIAlertAction(title: "확인", style: .default, handler: { action in
                 completionHandler()
             })
-           // * 만약 버튼의 색을 변경하고 싶다면 아래 구문을 추가
+           // * 만약 버튼의 색을 변경 구문
             ac.setValue(UIColor.systemBlue, forKey: "titleTextColor")
             alertController.addAction(ac)
             self.present(alertController, animated: true, completion: nil)
